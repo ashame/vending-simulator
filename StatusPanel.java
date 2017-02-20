@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import java.util.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author nathan
@@ -76,55 +78,48 @@ public class StatusPanel extends JPanel {
     }
 
     static class StatusLabel extends JLabel implements Runnable {
-        private Queue<Integer> queue;
+        private BlockingQueue<Integer> queue;
         private VendingMachine vm;
 
         public StatusLabel(VendingMachine vm) {
             this.vm = vm;
-            this.queue = new LinkedList<>();
+            this.queue = new LinkedBlockingQueue<>();
         }
 
         @Override
         public void run() {
-            long lastUpdate = System.currentTimeMillis();
-            long timeout = 750;
-            while (machineStatus != 66) {
-                while (System.currentTimeMillis() - lastUpdate < timeout) {
-                    try {
-                        Thread.sleep(30);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            while (true) {
+                long delay;
+                try {
+                    machineStatus = queue.take();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                if (queue.isEmpty()) {
-                    setText("READY");
-                    machineStatus = READY;
-                    updateBalance(vm);
-                    lastUpdate = System.currentTimeMillis();
-                } else {
-                    switch(queue.peek()) {
-                        case PAYMENT_SUCCESS:
-                            setText("VEND");
-                            timeout = 750;
-                            break;
-                        case ERROR_OUT_OF_STOCK:
-                            setText("OUT OF STOCK");
-                            timeout = 1500;
-                            break;
-                        case ERROR_PAYMENT_FAIL:
-                            setText("Not enough money");
-                            timeout = 1500;
-                            break;
-                        case ERROR_OTHER:
-                            setText("ERROR");
-                            timeout = 1500;
-                            break;
-                        default:
-                            setText("READY");
-                    }
-                    machineStatus = queue.poll();
-                    if (queue.isEmpty() || machineStatus != queue.peek())
-                        lastUpdate = System.currentTimeMillis();
+                switch (machineStatus) {
+                    case PAYMENT_SUCCESS:
+                        setText("VEND");
+                        delay = 750;
+                        break;
+                    case ERROR_OUT_OF_STOCK:
+                        setText("OUT OF STOCK");
+                        delay = 1200;
+                        break;
+                    case ERROR_PAYMENT_FAIL:
+                        setText("Not enough money");
+                        delay = 1200;
+                        break;
+                    case ERROR_OTHER:
+                        setText("ERROR");
+                        delay = 1200;
+                        break;
+                    default:
+                        setText("READY");
+                        delay = 500;
+                }
+                try {
+                    Thread.sleep(delay);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
