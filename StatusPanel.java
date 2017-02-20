@@ -33,7 +33,7 @@ public class StatusPanel extends JPanel {
         statusLabel = new StatusLabel(vm);
 
         ActionListener statusListener = e -> repaint();
-        new Timer(30, statusListener).start();
+        new Timer(100, statusListener).start(); //TODO: more efficient repainting
         new Thread(statusLabel).start();
 
         add(balance);
