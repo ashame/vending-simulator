@@ -1,6 +1,7 @@
 import java.util.Objects;
 
 /**
+ * A Product object to be used as merchandise in {@link VendingMachine}
  * @author nathan
  *         created on 2017-02-18.
  */

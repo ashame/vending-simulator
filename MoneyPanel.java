@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * A JPanel containing {@link Money} denominations to add to the machine
  * @author nathan
  *         created on 2017-02-19.
  */

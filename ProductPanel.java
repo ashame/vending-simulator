@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * A JPanel containing all available {@link Product}s for the vending machine
  * @author nathan
  *         created on 2017-02-19.
  */
