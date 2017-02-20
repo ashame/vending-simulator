@@ -86,7 +86,7 @@ public class VendingMachine {
 
     /**
      * Gets the current stock of a given {@link Product}
-     * @param p the product to check the stock for Mb>precondition: </b>the {@link Product} must exist in the machine
+     * @param p the product to check the stock for <b>precondition: </b>the {@link Product} must exist in the machine
      * @return the current stock of given {@link Product}
      */
     public int getStock(Product p) {
