@@ -1,5 +1,22 @@
 package net.imashamed.vendingsimulator;
 
+/*
+ *  This file is part of vending-simulator.
+ *
+ *  vending-simulator is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  vending-simulator is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with vending-simulator.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import net.imashamed.vendingsimulator.commands.*;
 import net.imashamed.vendingsimulator.swing.VendingGUI;
 
@@ -80,10 +97,10 @@ public class VendingMachineSimulation {
     private static HashMap<String, Command> registerCommands() {
         HashMap<String, Command> commands = new HashMap<>();
 
-        commands.put("add", new AddMoney());
-        commands.put("list", new ListItems());
-        commands.put("select", new SelectProduct());
-        commands.put("restock", new RestockProduct());
+        commands.put("add", new AddCommand());
+        commands.put("list", new ListCommand());
+        commands.put("select", new SelectCommand());
+        commands.put("restock", new RestockCommand());
 
         return commands;
     }

@@ -20,10 +20,13 @@ package net.imashamed.vendingsimulator.commands;
 import net.imashamed.vendingsimulator.VendingMachine;
 
 /**
- * An interface for all command-line commands to be used
  * @author nathan
- *         created on 2017-02-18.
+ *         created on 2017-02-20.
  */
-public interface Command {
-    void executeCommand(String[] cmd, VendingMachine vm);
+public class EmptyCommand implements Command {
+
+    @Override
+    public void executeCommand(String[] cmd, VendingMachine vm) {
+
+    }
 }

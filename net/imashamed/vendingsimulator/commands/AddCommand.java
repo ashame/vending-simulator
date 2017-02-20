@@ -10,7 +10,7 @@ import java.util.Arrays;
  * @author nathan
  *         created on 2017-02-18.
  */
-public class AddMoney implements Command {
+public class AddCommand implements Command {
 
     public void executeCommand(String[] cmd, VendingMachine vm) {
         if (cmd.length < 2) {
