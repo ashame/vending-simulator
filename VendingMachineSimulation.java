@@ -39,7 +39,7 @@ public class VendingMachineSimulation {
     /**
      * Processes commands from an input stream
      * @param in the input stream to read commands from
-     * @param vm the {@link VendingMachine} to process oommands to
+     * @param vm the {@link VendingMachine} to process commands to
      */
     private static void processCommands(Scanner in, VendingMachine vm) {
         String[] input;
@@ -59,6 +59,10 @@ public class VendingMachineSimulation {
         } while (!input[0].equals("quit"));
     }
 
+    /**
+     * Registers {@link Command}s to be processed
+     * @return a HashMap of all available commands
+     */
     private static HashMap<String, Command> registerCommands() {
         HashMap<String, Command> commands = new HashMap<>();
 
@@ -70,6 +74,9 @@ public class VendingMachineSimulation {
         return commands;
     }
 
+    /**
+     * Prints all available {@link Command}s to console
+     */
     private static void printCommands() {
         StringBuilder sb = new StringBuilder();
         sb.append("\r\nCommands: ");
