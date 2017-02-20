@@ -25,7 +25,11 @@ public class ProductPanel extends JPanel {
             productButtons.put(p.getName(), new JButton(p.getName()));
             productButtons.get(p.getName()).addActionListener(e -> {
                 try {
-                    machine.selectProduct(p);
+                    if (machine.selectProduct(p)) {
+                        StatusPanel.setStatus(StatusPanel.WORKING, 750);
+                    } else {
+                        StatusPanel.setStatus(StatusPanel.ERROR, 1000);
+                    }
                     StatusPanel.updateBalance(machine);
                 } catch (UnsupportedOperationException ue) {
                     LOGGER.log(Level.WARNING, "Not yet implemented", ue);

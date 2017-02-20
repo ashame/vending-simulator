@@ -158,25 +158,28 @@ public class VendingMachine {
     /**
      * Selects a given {@link Product} from the machine, and processes payment
      * @param product the {@link Product} to purchase
+     * @return if the product was successfully sold
      */
-    public void selectProduct(Product product) {
+    public boolean selectProduct(Product product) {
         if (userBalance == 0) {
             if (!processCredit(product.getPrice())) {
-                LOGGER.warning("There was an error processing your payment.");
+                return false;
             }
         } else {
             if (product.getPrice() > userBalance) {
                 LOGGER.warning("Not enough money!");
+                return false;
             } else {
                 if (getStock(product) == 0) {
                     LOGGER.info(product.getName() + " is out of stock.");
-                    return;
+                    return false;
                 }
                 machineBalance += userBalance;
                 userBalance = 0;
                 updateStock(product, -1);
             }
         }
+        return true;
     }
 
     /**
