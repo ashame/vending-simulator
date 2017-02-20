@@ -33,7 +33,7 @@ import java.util.Map;
 public class MoneyPanel extends JPanel {
     public MoneyPanel(VendingMachine machine) {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        setBorder(new TitledBorder("Add net.imashamed.vendingsimulator.Money"));
+        setBorder(new TitledBorder("Add Money"));
 
         Map<Money, JButton> moneyButtons = new LinkedHashMap<>();
         for (Money m : Money.values()) {
