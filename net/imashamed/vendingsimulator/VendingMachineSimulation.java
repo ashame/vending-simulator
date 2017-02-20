@@ -1,3 +1,8 @@
+package net.imashamed.vendingsimulator;
+
+import net.imashamed.vendingsimulator.commands.*;
+import net.imashamed.vendingsimulator.swing.VendingGUI;
+
 import javax.swing.*;
 import java.util.HashMap;
 import java.util.Scanner;

@@ -1,3 +1,7 @@
+package net.imashamed.vendingsimulator.swing;
+
+import net.imashamed.vendingsimulator.VendingMachine;
+
 import javax.swing.*;
 import javax.swing.Timer;
 import javax.swing.border.BevelBorder;
@@ -26,7 +30,7 @@ public class StatusPanel extends JPanel {
     private static int machineStatus = READY;
 
     /**
-     * Constructs a new StatusPanel to display information for a given {@link VendingMachine}
+     * Constructs a new net.imashamed.vendingsimulator.swing.StatusPanel to display information for a given {@link VendingMachine}
      * @param vm the {@link VendingMachine} to display information for
      */
     public StatusPanel(VendingMachine vm) {

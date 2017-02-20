@@ -1,3 +1,8 @@
+package net.imashamed.vendingsimulator.commands;
+
+import net.imashamed.vendingsimulator.Product;
+import net.imashamed.vendingsimulator.VendingMachine;
+
 /**
  * Restocks a given product to a given amount
  * @author nathan

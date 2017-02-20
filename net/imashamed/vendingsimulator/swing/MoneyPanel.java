@@ -1,3 +1,8 @@
+package net.imashamed.vendingsimulator.swing;
+
+import net.imashamed.vendingsimulator.Money;
+import net.imashamed.vendingsimulator.VendingMachine;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.util.LinkedHashMap;
@@ -11,7 +16,7 @@ import java.util.Map;
 public class MoneyPanel extends JPanel {
     public MoneyPanel(VendingMachine machine) {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        setBorder(new TitledBorder("Add Money"));
+        setBorder(new TitledBorder("Add net.imashamed.vendingsimulator.Money"));
 
         Map<Money, JButton> moneyButtons = new LinkedHashMap<>();
         for (Money m : Money.values()) {

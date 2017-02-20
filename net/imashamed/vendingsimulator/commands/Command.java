@@ -1,3 +1,7 @@
+package net.imashamed.vendingsimulator.commands;
+
+import net.imashamed.vendingsimulator.VendingMachine;
+
 /**
  * An interface for all command-line commands to be used
  * @author nathan

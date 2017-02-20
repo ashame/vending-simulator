@@ -1,3 +1,5 @@
+package net.imashamed.vendingsimulator;
+
 /**
  * An enumerated type containing all available denominations of money to be used
  * @author nathan

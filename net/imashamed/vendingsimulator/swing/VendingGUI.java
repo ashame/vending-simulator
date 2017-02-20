@@ -1,3 +1,7 @@
+package net.imashamed.vendingsimulator.swing;
+
+import net.imashamed.vendingsimulator.VendingMachine;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.logging.Level;

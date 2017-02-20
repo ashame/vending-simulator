@@ -1,3 +1,8 @@
+package net.imashamed.vendingsimulator.commands;
+
+import net.imashamed.vendingsimulator.Money;
+import net.imashamed.vendingsimulator.VendingMachine;
+
 import java.util.Arrays;
 
 /**

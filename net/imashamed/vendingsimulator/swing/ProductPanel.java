@@ -1,3 +1,8 @@
+package net.imashamed.vendingsimulator.swing;
+
+import net.imashamed.vendingsimulator.Product;
+import net.imashamed.vendingsimulator.VendingMachine;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
