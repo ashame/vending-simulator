@@ -1,10 +1,11 @@
 import java.util.Arrays;
 
 /**
+ * Adds a given denomination of money to the user's balance
  * @author nathan
  *         created on 2017-02-18.
  */
-public class AddItem implements Command {
+public class AddMoney implements Command {
 
     public void executeCommand(String[] cmd, VendingMachine vm) {
         if (cmd.length < 2) {

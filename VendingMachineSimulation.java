@@ -66,7 +66,7 @@ public class VendingMachineSimulation {
     private static HashMap<String, Command> registerCommands() {
         HashMap<String, Command> commands = new HashMap<>();
 
-        commands.put("add", new AddItem());
+        commands.put("add", new AddMoney());
         commands.put("list", new ListItems());
         commands.put("select", new SelectProduct());
         commands.put("restock", new RestockProduct());

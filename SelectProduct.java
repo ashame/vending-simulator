@@ -1,4 +1,5 @@
 /**
+ * Selects a product to be purchased
  * @author nathan
  *         created on 2017-02-19.
  */
@@ -18,19 +19,11 @@ public class SelectProduct implements Command {
         productName = productName.trim();
 
         Product p = vm.getProductByName(productName);
-        if (p != null) {
+        if (p != null) { //TODO: Implement credit support
             vm.selectProduct(p);
         } else {
             System.out.println("The product \"" + productName + "\" was not found.");
-            StringBuilder sb = new StringBuilder();
-            sb.append("Available products: ");
-            for (Object o : vm.getProducts()) {
-                Product product = (Product) o;
-                sb.append(product.getName());
-                sb.append(", ");
-            }
-            sb.delete(sb.length() - 2, sb.length());
-            System.out.println(sb.toString());
+            System.out.println("Use 'list' to view all available products.");
         }
     }
 }

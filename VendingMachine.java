@@ -3,6 +3,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 /**
+ * A vending machine object containing a collection of products
  * @author nathan
  *         created on 2017-02-18.
  */

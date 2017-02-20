@@ -1,4 +1,5 @@
 /**
+ * Prints out a list of all current items in the vending machine, along with its price and current stock
  * @author nathan
  *         created on 2017-02-18.
  */
