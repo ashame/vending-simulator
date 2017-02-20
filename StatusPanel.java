@@ -18,6 +18,7 @@ public class StatusPanel extends JPanel {
     public static final int ERROR_OUT_OF_STOCK = 3;
     public static final int ERROR_PAYMENT_FAIL = 4;
     public static final int ERROR_OTHER = 5;
+    public static final int TRANSITION = 6;
 
     private static JLabel balance;
     private static StatusLabel statusLabel;
@@ -92,6 +93,11 @@ public class StatusPanel extends JPanel {
                 while ((machineStatus = queue.take()) != -1) {
                     long delay;
                     switch (machineStatus) {
+                        case READY:
+                            setText("READY");
+                            updateBalance(vm);
+                            delay = 0;
+                            break;
                         case PAYMENT_SUCCESS:
                             setText("VEND");
                             delay = 750;
@@ -109,14 +115,16 @@ public class StatusPanel extends JPanel {
                             delay = 1250;
                             break;
                         default:
-                            setText("READY");
-                            updateBalance(vm);
-                            delay = 0;
+                            delay = 150;
                     }
                     if (!queue.isEmpty() && queue.peek() != machineStatus) {
                         Thread.sleep(delay);
                     }
-                    updateStatus(READY);
+                    if (machineStatus != TRANSITION && machineStatus != READY) {
+                        updateStatus(TRANSITION);
+                    } else {
+                        updateStatus(READY);
+                    }
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
