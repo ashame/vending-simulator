@@ -1,4 +1,4 @@
-package net.imashamed.vendingsimulator.swing;
+package net.imashamed.vsim.swing;
 
 /*
  *  This file is part of vending-simulator.
@@ -17,7 +17,7 @@ package net.imashamed.vendingsimulator.swing;
  *  along with vending-simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import net.imashamed.vendingsimulator.VendingMachine;
+import net.imashamed.vsim.VendingMachine;
 
 import javax.swing.*;
 import java.awt.*;

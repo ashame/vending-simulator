@@ -1,6 +1,6 @@
-package net.imashamed.vendingsimulator.swing;
+package net.imashamed.vsim.swing;
 
-import net.imashamed.vendingsimulator.VendingMachine;
+import net.imashamed.vsim.VendingMachine;
 
 /*
  *  This file is part of vending-simulator.
@@ -47,7 +47,7 @@ public class StatusPanel extends JPanel {
     private static int machineStatus = READY;
 
     /**
-     * Constructs a new net.imashamed.vendingsimulator.swing.StatusPanel to display information for a given {@link VendingMachine}
+     * Constructs a new net.imashamed.vsim.swing.StatusPanel to display information for a given {@link VendingMachine}
      * @param vm the {@link VendingMachine} to display information for
      */
     public StatusPanel(VendingMachine vm) {

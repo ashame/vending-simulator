@@ -1,6 +1,4 @@
-package net.imashamed.vendingsimulator;
-
-/*
+package net.imashamed.vsim.swing;/*
  *  This file is part of vending-simulator.
  *
  *  vending-simulator is free software: you can redistribute it and/or modify
@@ -17,28 +15,34 @@ package net.imashamed.vendingsimulator;
  *  along with vending-simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URL;
+
 /**
- * An enumerated type containing all available denominations of money to be used
  * @author nathan
- *         created on 2017-02-18.
+ *         created on 2017-02-20.
  */
-public enum Money {
-    LOONIE(1.00),
-    TOONIE(2.00),
-    FIVE(5.00),
-    TEN(10.00),
-    TWENTY(20.00);
+public class MachinePanel extends JPanel {
+    Image img;
 
-    private final double value;
-
-    Money(double value) {
-        this.value = value;
+    public MachinePanel() {
+        try {
+            img = ImageIO.read(new URL("http://i.imgur.com/5laqvFF.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            img = null;
+        }
+        setLayout(new BorderLayout());
+        setBorder(BorderFactory.createTitledBorder("Vending Machine"));
     }
 
-    /**
-     * @return the dollar value
-     */
-    public double value() {
-        return this.value;
+    @Override
+    public void paintComponent(Graphics g) {
+        if (img != null) {
+            g.drawImage(img, 4, 25, null);
+        }
     }
 }

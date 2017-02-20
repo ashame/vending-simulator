@@ -1,4 +1,4 @@
-package net.imashamed.vendingsimulator;
+package net.imashamed.vsim;
 
 /*
  *  This file is part of vending-simulator.
@@ -20,7 +20,7 @@ package net.imashamed.vendingsimulator;
 import java.util.Objects;
 
 /**
- * A net.imashamed.vendingsimulator.Product object to be used as merchandise in {@link VendingMachine}
+ * A net.imashamed.vsim.Product object to be used as merchandise in {@link VendingMachine}
  * @author nathan
  *         created on 2017-02-18.
  */
@@ -71,16 +71,16 @@ public class Product {
     }
 
     /**
-     * @return the hash code of the net.imashamed.vendingsimulator.Product
+     * @return the hash code of the net.imashamed.vsim.Product
      */
     public int hashCode() {
         return Objects.hash(name, price);
     }
 
     /**
-     * @return a string representation of the product in the format net.imashamed.vendingsimulator.Product[name, price]
+     * @return a string representation of the product in the format net.imashamed.vsim.Product[name, price]
      */
     public String toString() {
-        return String.format("net.imashamed.vendingsimulator.Product[%s, $%.2f]", name, price);
+        return String.format("net.imashamed.vsim.Product[%s, $%.2f]", name, price);
     }
 }

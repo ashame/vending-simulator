@@ -1,4 +1,4 @@
-package net.imashamed.vendingsimulator;
+package net.imashamed.vsim;
 
 /*
  *  This file is part of vending-simulator.
@@ -36,7 +36,7 @@ public class VendingMachine {
     private Map<Product, Integer> products;
 
     /**
-     * Constructs a new net.imashamed.vendingsimulator.VendingMachine with default values
+     * Constructs a new net.imashamed.vsim.VendingMachine with default values
      */
     public VendingMachine() {
         userBalance = 0;
@@ -45,7 +45,7 @@ public class VendingMachine {
     }
 
     /**
-     * Constructs a new net.imashamed.vendingsimulator.VendingMachine and fills it with given {@link Product}s with a default quantity of 5
+     * Constructs a new net.imashamed.vsim.VendingMachine and fills it with given {@link Product}s with a default quantity of 5
      * @param products The {@link Product}s to fill the machine with
      */
     public VendingMachine(Product... products) {
@@ -217,11 +217,11 @@ public class VendingMachine {
     }
 
     /**
-     * @return a string representation of net.imashamed.vendingsimulator.VendingMachine, in the format net.imashamed.vendingsimulator.VendingMachine[machineBalance, userBalance, Products{productName, productPrice, productStock}]
+     * @return a string representation of net.imashamed.vsim.VendingMachine, in the format net.imashamed.vsim.VendingMachine[machineBalance, userBalance, Products{productName, productPrice, productStock}]
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("net.imashamed.vendingsimulator.VendingMachine[machineBalance: ");
+        sb.append("net.imashamed.vsim.VendingMachine[machineBalance: ");
         sb.append(String.format("%.2f", machineBalance));
         sb.append(", userBalance: ");
         sb.append(String.format("%.2f", userBalance));

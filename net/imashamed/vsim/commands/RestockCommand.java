@@ -1,4 +1,4 @@
-package net.imashamed.vendingsimulator.commands;
+package net.imashamed.vsim.commands;
 
 /*
  *  This file is part of vending-simulator.
@@ -17,8 +17,8 @@ package net.imashamed.vendingsimulator.commands;
  *  along with vending-simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import net.imashamed.vendingsimulator.Product;
-import net.imashamed.vendingsimulator.VendingMachine;
+import net.imashamed.vsim.Product;
+import net.imashamed.vsim.VendingMachine;
 
 /**
  * Restocks a given product to a given amount

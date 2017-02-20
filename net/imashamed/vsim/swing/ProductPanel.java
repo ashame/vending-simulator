@@ -1,7 +1,7 @@
-package net.imashamed.vendingsimulator.swing;
+package net.imashamed.vsim.swing;
 
-import net.imashamed.vendingsimulator.Product;
-import net.imashamed.vendingsimulator.VendingMachine;
+import net.imashamed.vsim.Product;
+import net.imashamed.vsim.VendingMachine;
 
 /*
  *  This file is part of vending-simulator.

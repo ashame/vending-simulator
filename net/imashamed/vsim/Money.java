@@ -1,4 +1,4 @@
-package net.imashamed.vendingsimulator.commands;
+package net.imashamed.vsim;
 
 /*
  *  This file is part of vending-simulator.
@@ -17,22 +17,28 @@ package net.imashamed.vendingsimulator.commands;
  *  along with vending-simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import net.imashamed.vendingsimulator.Product;
-import net.imashamed.vendingsimulator.VendingMachine;
-
 /**
- * Prints out a list of all current items in the vending machine, along with its price and current stock
+ * An enumerated type containing all available denominations of money to be used
  * @author nathan
  *         created on 2017-02-18.
  */
-public class ListCommand implements Command {
+public enum Money {
+    LOONIE(1.00),
+    TOONIE(2.00),
+    FIVE(5.00),
+    TEN(10.00),
+    TWENTY(20.00);
 
-    public void executeCommand(String[] cmd, VendingMachine vm) {
-        System.out.printf("\r\n%-20s %-10s %5s\r\n", "net.imashamed.vendingsimulator.Product Name", "Price", "Stock");
-        System.out.printf("%-20s %-10s %5s\r\n", "------------", "-----", "-----");
-        for (Object o : vm.getProducts()) {
-            Product p = (Product) o;
-            System.out.printf("%-20s $%-10.2f %4d\r\n", p.getName(), p.getPrice(), vm.getStock(p));
-        }
+    private final double value;
+
+    Money(double value) {
+        this.value = value;
+    }
+
+    /**
+     * @return the dollar value
+     */
+    public double value() {
+        return this.value;
     }
 }
