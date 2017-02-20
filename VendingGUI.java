@@ -9,10 +9,8 @@ import java.util.logging.Logger;
  */
 public class VendingGUI extends JFrame {
     private static final Logger LOGGER = Logger.getLogger(VendingGUI.class.getName());
-    private VendingMachine machine;
 
     public VendingGUI(VendingMachine machine) {
-        this.machine = machine;
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {

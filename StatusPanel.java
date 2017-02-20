@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
@@ -15,17 +16,17 @@ public class StatusPanel extends JPanel {
     public static final int TRANSITION = 3;
 
     private static JLabel balance = new JLabel();
-    private static int machineStatus = 0;
+    private static int machineStatus = READY;
 
     public StatusPanel(VendingMachine machine) {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         setPreferredSize(new Dimension(getWidth(), 20));
 
-        updateBalance(machine);
-
         ActionListener statusListener = e -> repaint();
         new Timer(100, statusListener).start();
+
+        updateBalance(machine);
 
         add(balance);
     }

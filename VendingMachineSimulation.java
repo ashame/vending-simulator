@@ -1,14 +1,12 @@
 import javax.swing.*;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 /**
  * @author nathan
  *         created on 2017-02-18.
  */
 public class VendingMachineSimulation {
-    private static final Logger LOGGER = Logger.getLogger(VendingMachineSimulation.class.getName());
     private static HashMap<String, Command> commands = registerCommands();
 
     public static void main(String[] args) {
@@ -20,6 +18,8 @@ public class VendingMachineSimulation {
                 new Product("Potato Chips", 1.25),
                 new Product("Chocolate Bar", 1.50),
                 new Product("Cookies", 1.75),
+                new Product("Mixed Nuts", 2.25),
+                new Product("Dried Fruits", 3.00),
                 new Product("Granola Bar", 2.00));
 
         if (gui) {
