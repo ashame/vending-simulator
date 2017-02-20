@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -8,6 +8,10 @@ import java.util.logging.Logger;
  *         created on 2017-02-18.
  */
 public class VendingMachine {
+    public static final int SUCCESS = 0;
+    public static final int OUT_OF_STOCK = 1;
+    public static final int PAYMENT_FAIL = 2;
+
     private static final Logger LOGGER = Logger.getLogger(VendingMachine.class.getName());
     private double userBalance, machineBalance;
     private Map<Product, Integer> products;
@@ -18,7 +22,7 @@ public class VendingMachine {
     public VendingMachine() {
         userBalance = 0;
         machineBalance = 0;
-        products = new HashMap<>();
+        products = new LinkedHashMap<>();
     }
 
     /**
@@ -160,26 +164,25 @@ public class VendingMachine {
      * @param product the {@link Product} to purchase
      * @return if the product was successfully sold
      */
-    public boolean selectProduct(Product product) {
-        if (userBalance == 0) {
-            if (!processCredit(product.getPrice())) {
-                return false;
-            }
+    public int selectProduct(Product product) {
+        if (getStock(product) == 0) {
+            LOGGER.info(product.getName() + " is out of stock.");
+            return OUT_OF_STOCK;
         } else {
-            if (product.getPrice() > userBalance) {
-                LOGGER.warning("Not enough money!");
-                return false;
-            } else {
-                if (getStock(product) == 0) {
-                    LOGGER.info(product.getName() + " is out of stock.");
-                    return false;
+            if (userBalance == 0) {
+                if (!processCredit(product.getPrice())) {
+                    return PAYMENT_FAIL;
                 }
+            } else if (product.getPrice() > userBalance) {
+                LOGGER.warning("Not enough money!");
+                return PAYMENT_FAIL;
+            } else {
                 machineBalance += userBalance;
                 userBalance = 0;
                 updateStock(product, -1);
             }
         }
-        return true;
+        return SUCCESS;
     }
 
     /**

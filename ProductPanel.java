@@ -25,12 +25,19 @@ public class ProductPanel extends JPanel {
             productButtons.put(p.getName(), new JButton(p.getName()));
             productButtons.get(p.getName()).addActionListener(e -> {
                 try {
-                    if (machine.selectProduct(p)) {
-                        StatusPanel.setStatus(StatusPanel.WORKING, 750);
-                    } else {
-                        StatusPanel.setStatus(StatusPanel.ERROR, 1000);
+                    switch (machine.selectProduct(p)) {
+                        case VendingMachine.OUT_OF_STOCK:
+                            StatusPanel.updateStatus(StatusPanel.ERROR_OUT_OF_STOCK);
+                            break;
+                        case VendingMachine.PAYMENT_FAIL:
+                            StatusPanel.updateStatus(StatusPanel.ERROR_PAYMENT_FAIL);
+                            break;
+                        case VendingMachine.SUCCESS:
+                            StatusPanel.updateStatus(StatusPanel.PAYMENT_SUCCESS);
+                            break;
+                        default:
+                            StatusPanel.updateStatus(StatusPanel.ERROR_OTHER);
                     }
-                    StatusPanel.updateBalance(machine);
                 } catch (UnsupportedOperationException ue) {
                     LOGGER.log(Level.WARNING, "Not yet implemented", ue);
                 }

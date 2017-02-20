@@ -11,16 +11,24 @@ public class VendingMachineSimulation {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.print("GUI (type yes): ");
-        boolean gui = in.nextLine().equalsIgnoreCase("yes");
+        boolean gui;
+
+        if (args.length > 0) {
+            gui = args[0].equalsIgnoreCase("--gui");
+        } else {
+            System.out.print("GUI (y/n): ");
+            gui = in.nextLine().equalsIgnoreCase("y");
+        }
 
         VendingMachine machine = new VendingMachine(
                 new Product("Potato Chips", 1.25),
                 new Product("Chocolate Bar", 1.50),
+                new Product("Jell-O Cup", 1.50),
+                new Product("Gummy Candies", 1.5),
                 new Product("Cookies", 1.75),
+                new Product("Granola Bar", 2.00),
                 new Product("Mixed Nuts", 2.25),
-                new Product("Dried Fruits", 3.00),
-                new Product("Granola Bar", 2.00));
+                new Product("Dried Fruits", 3.00));
 
         if (gui) {
             in.close();

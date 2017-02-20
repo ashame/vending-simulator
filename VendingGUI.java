@@ -31,7 +31,8 @@ public class VendingGUI extends JFrame {
         getContentPane().add(backPanel, BorderLayout.CENTER);
         getContentPane().add(new StatusPanel(machine), BorderLayout.SOUTH);
 
-        setPreferredSize(new Dimension(480, 640));
+        setPreferredSize(new Dimension(380, 560));
+
         setResizable(false);
         pack();
     }
