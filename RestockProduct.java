@@ -2,7 +2,7 @@
  * @author nathan
  *         created on 2017-02-19.
  */
-public class RestockProduct implements Command{
+public class RestockProduct implements Command {
 
     public void executeCommand(String[] cmd, VendingMachine vm) {
         if (cmd.length < 2) {

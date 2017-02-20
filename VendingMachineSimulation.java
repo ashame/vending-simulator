@@ -59,7 +59,7 @@ public class VendingMachineSimulation {
 
         commands.put("add", new AddItem());
         commands.put("list", new ListItems());
-        commands.put("select", new SelectItem());
+        commands.put("select", new SelectProduct());
         commands.put("restock", new RestockProduct());
 
         return commands;
@@ -72,7 +72,7 @@ public class VendingMachineSimulation {
             sb.append(s);
             sb.append(", ");
         }
-        sb.delete(sb.length() - 2, sb.length());
+        sb.append("quit");
         System.out.println(sb.toString());
     }
 }

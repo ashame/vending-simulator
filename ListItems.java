@@ -5,6 +5,11 @@
 public class ListItems implements Command {
 
     public void executeCommand(String[] cmd, VendingMachine vm) {
-        System.out.println(vm.toString());
+        System.out.printf("\r\n%-20s %-10s %5s\r\n", "Product Name", "Price", "Stock");
+        System.out.printf("%-20s %-10s %5s\r\n", "------------", "-----", "-----");
+        for (Object o : vm.getProducts()) {
+            Product p = (Product) o;
+            System.out.printf("%-20s $%-10.2f %4d\r\n", p.getName(), p.getPrice(), vm.getStock(p));
+        }
     }
 }

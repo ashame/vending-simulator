@@ -2,7 +2,7 @@
  * @author nathan
  *         created on 2017-02-19.
  */
-public class SelectItem implements Command {
+public class SelectProduct implements Command {
 
     public void executeCommand(String[] cmd, VendingMachine vm) {
         if (cmd.length < 2) {
@@ -18,9 +18,19 @@ public class SelectItem implements Command {
         productName = productName.trim();
 
         Product p = vm.getProductByName(productName);
-        if (p != null)
+        if (p != null) {
             vm.selectProduct(p);
-        else
+        } else {
             System.out.println("The product \"" + productName + "\" was not found.");
+            StringBuilder sb = new StringBuilder();
+            sb.append("Available products: ");
+            for (Object o : vm.getProducts()) {
+                Product product = (Product) o;
+                sb.append(product.getName());
+                sb.append(", ");
+            }
+            sb.delete(sb.length() - 2, sb.length());
+            System.out.println(sb.toString());
+        }
     }
 }
