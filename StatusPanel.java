@@ -4,7 +4,6 @@ import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
-import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -84,43 +83,43 @@ public class StatusPanel extends JPanel {
         public StatusLabel(VendingMachine vm) {
             this.vm = vm;
             this.queue = new LinkedBlockingQueue<>();
+            queue.add(READY);
         }
 
         @Override
         public void run() {
-            while (true) {
-                long delay;
-                try {
-                    machineStatus = queue.take();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            try {
+                while ((machineStatus = queue.take()) != -1) {
+                    long delay;
+                    switch (machineStatus) {
+                        case PAYMENT_SUCCESS:
+                            setText("VEND");
+                            delay = 750;
+                            break;
+                        case ERROR_OUT_OF_STOCK:
+                            setText("OUT OF STOCK");
+                            delay = 1250;
+                            break;
+                        case ERROR_PAYMENT_FAIL:
+                            setText("Not enough money");
+                            delay = 1250;
+                            break;
+                        case ERROR_OTHER:
+                            setText("ERROR");
+                            delay = 1250;
+                            break;
+                        default:
+                            setText("READY");
+                            updateBalance(vm);
+                            delay = 0;
+                    }
+                    if (!queue.isEmpty() && queue.peek() != machineStatus) {
+                        Thread.sleep(delay);
+                    }
+                    updateStatus(READY);
                 }
-                switch (machineStatus) {
-                    case PAYMENT_SUCCESS:
-                        setText("VEND");
-                        delay = 750;
-                        break;
-                    case ERROR_OUT_OF_STOCK:
-                        setText("OUT OF STOCK");
-                        delay = 1200;
-                        break;
-                    case ERROR_PAYMENT_FAIL:
-                        setText("Not enough money");
-                        delay = 1200;
-                        break;
-                    case ERROR_OTHER:
-                        setText("ERROR");
-                        delay = 1200;
-                        break;
-                    default:
-                        setText("READY");
-                        delay = 500;
-                }
-                try {
-                    Thread.sleep(delay);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 
