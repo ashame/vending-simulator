@@ -49,6 +49,8 @@ public class VendingGUI extends JFrame {
 
         backPanel.add(new MoneyPanel(machine), BorderLayout.NORTH);
         backPanel.add(new ProductPanel(machine), BorderLayout.WEST);
+        backPanel.add(new MachinePanel(), BorderLayout.CENTER);
+
         getContentPane().add(backPanel, BorderLayout.CENTER);
         getContentPane().add(new StatusPanel(machine), BorderLayout.SOUTH);
 
