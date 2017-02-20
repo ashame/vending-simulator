@@ -117,13 +117,15 @@ public class StatusPanel extends JPanel {
                         default:
                             delay = 150;
                     }
-                    if (!queue.isEmpty() && queue.peek() != machineStatus) {
+                    if (queue.isEmpty() || queue.peek() != machineStatus) {
                         Thread.sleep(delay);
                     }
-                    if (machineStatus != TRANSITION && machineStatus != READY) {
-                        updateStatus(TRANSITION);
-                    } else {
-                        updateStatus(READY);
+                    if (machineStatus != READY) {
+                        if (machineStatus == TRANSITION) {
+                            updateStatus(READY);
+                        } else {
+                            updateStatus(TRANSITION);
+                        }
                     }
                 }
             } catch (InterruptedException e) {
