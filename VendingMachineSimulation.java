@@ -36,7 +36,12 @@ public class VendingMachineSimulation {
         }
     }
 
-    public static void processCommands(Scanner in, VendingMachine vm) {
+    /**
+     * Processes commands from an input stream
+     * @param in the input stream to read commands from
+     * @param vm the {@link VendingMachine} to process oommands to
+     */
+    private static void processCommands(Scanner in, VendingMachine vm) {
         String[] input;
         printCommands();
         do {
