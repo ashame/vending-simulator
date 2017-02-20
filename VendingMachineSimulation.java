@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
+ * A GUI or command-line simulation of a vending machine.
  * @author nathan
  *         created on 2017-02-18.
  */

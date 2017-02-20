@@ -8,6 +8,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
+ * A JPanel containing status information for a vending machine
  * @author nathan
  *         created on 2017-02-19.
  */
@@ -20,10 +21,14 @@ public class StatusPanel extends JPanel {
     public static final int ERROR_OTHER = 5;
     public static final int TRANSITION = 6;
 
-    private static JLabel balance;
+    private static JLabel balance; //TODO: kinda hacked together
     private static StatusLabel statusLabel;
     private static int machineStatus = READY;
 
+    /**
+     * Constructs a new StatusPanel to display information for a given {@link VendingMachine}
+     * @param vm the {@link VendingMachine} to display information for
+     */
     public StatusPanel(VendingMachine vm) {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
@@ -42,6 +47,10 @@ public class StatusPanel extends JPanel {
         add(Box.createRigidArea(new Dimension(15, 0)));
     }
 
+    /**
+     * Paints the LED indicator in the status panel
+     * @param g the graphics environment
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -69,10 +78,18 @@ public class StatusPanel extends JPanel {
         g2.setColor(c2);
     }
 
+    /**
+     * Updates the user balance of a given {@link VendingMachine} and displays it
+     * @param machine the {@link VendingMachine} to update balance for
+     */
     public static void updateBalance(VendingMachine machine) {
         balance.setText(String.format("$%.2f", machine.getUserBalance()));
     }
 
+    /**
+     * Updates the status of the {@link VendingMachine} and displays it as text and a LED indicator
+     * @param status the status of the machine: READY, WORKING, PAYMEMNT_SUCCESS, ERROR_OUT_OF_STOCK, ERROR_PAYMENT_FAIL, ERROR_OTHER, or TRANSITION
+     */
     public static void updateStatus(int status) {
         statusLabel.updateStatus(status);
     }
@@ -114,8 +131,11 @@ public class StatusPanel extends JPanel {
                             setText("ERROR");
                             delay = 1250;
                             break;
-                        default:
+                        case TRANSITION:
                             delay = 150;
+                            break;
+                        default:
+                            delay = 0;
                     }
                     if (queue.isEmpty() || queue.peek() != machineStatus) {
                         Thread.sleep(delay);
@@ -133,7 +153,11 @@ public class StatusPanel extends JPanel {
             }
         }
 
-        public void updateStatus(int status) {
+        /**
+         * Updates the status and enqueues it to be processed
+         * @param status the status of the machine: READY, WORKING, PAYMEMNT_SUCCESS, ERROR_OUT_OF_STOCK, ERROR_PAYMENT_FAIL, ERROR_OTHER, or TRANSITION
+         */
+        private void updateStatus(int status) {
             queue.add(status);
         }
     }

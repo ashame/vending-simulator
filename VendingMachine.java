@@ -162,7 +162,7 @@ public class VendingMachine {
     /**
      * Selects a given {@link Product} from the machine, and processes payment
      * @param product the {@link Product} to purchase
-     * @return if the product was successfully sold
+     * @return the status of the payment
      */
     public int selectProduct(Product product) {
         if (getStock(product) == 0) {

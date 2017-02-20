@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * A GUI for a vending machine simulation
  * @author nathan
  *         created on 2017-02-18.
  */
@@ -21,7 +22,6 @@ public class VendingGUI extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        //Back panel
         JPanel backPanel = new JPanel();
         backPanel.setLayout(new BorderLayout());
         backPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
