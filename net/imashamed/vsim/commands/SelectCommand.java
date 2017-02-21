@@ -44,11 +44,16 @@ public class SelectCommand implements Command {
         if (p != null) { //TODO: Implement credit support
             switch (vm.selectProduct(p)) {
                 case VendingMachine.OUT_OF_STOCK:
-                    System.out.println("The selected product is out of stock!");
+                    System.out.println("** The selected product is out of stock!");
+                    break;
                 case VendingMachine.PAYMENT_FAIL:
+                    System.out.println("** Payment error!");
+                    break;
                 case VendingMachine.SUCCESS:
+                    System.out.println("Thank you!");
+                    break;
                 default:
-
+                    System.out.println("** Unknown state **");
             }
         } else {
             System.out.println("The product \"" + productName + "\" was not found.");

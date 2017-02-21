@@ -1,4 +1,5 @@
 package net.imashamed.vsim.swing;/*
+
  *  This file is part of vending-simulator.
  *
  *  vending-simulator is free software: you can redistribute it and/or modify
