@@ -28,7 +28,7 @@ import net.imashamed.vsim.VendingMachine;
 public class ListCommand implements Command {
 
     public void executeCommand(String[] cmd, VendingMachine vm) {
-        System.out.printf("\r\n%-20s %-10s %5s\r\n", "net.imashamed.vsim.Product Name", "Price", "Stock");
+        System.out.printf("\r\n%-20s %-10s %5s\r\n", "Product Name", "Price", "Stock");
         System.out.printf("%-20s %-10s %5s\r\n", "------------", "-----", "-----");
         for (Object o : vm.getProducts()) {
             Product p = (Product) o;

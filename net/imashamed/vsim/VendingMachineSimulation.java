@@ -63,6 +63,7 @@ public class VendingMachineSimulation {
                 vGUI.setLocationRelativeTo(null);
             });
         } else {
+            commands.get("list").executeCommand(null, machine);
             processCommands(in, machine);
         }
     }
@@ -101,6 +102,7 @@ public class VendingMachineSimulation {
         commands.put("list", new ListCommand());
         commands.put("select", new SelectCommand());
         commands.put("restock", new RestockCommand());
+        commands.put("empty", new EmptyCommand());
 
         return commands;
     }

@@ -81,6 +81,6 @@ public class Product {
      * @return a string representation of the product in the format net.imashamed.vsim.Product[name, price]
      */
     public String toString() {
-        return String.format("net.imashamed.vsim.Product[%s, $%.2f]", name, price);
+        return String.format("Product[%s, $%.2f]", name, price);
     }
 }

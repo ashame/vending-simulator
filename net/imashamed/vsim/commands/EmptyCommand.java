@@ -27,6 +27,6 @@ public class EmptyCommand implements Command {
 
     @Override
     public void executeCommand(String[] cmd, VendingMachine vm) {
-
+        System.out.printf("Emptied machine: $%,2f", vm.emptyMachine());
     }
 }

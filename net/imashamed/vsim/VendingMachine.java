@@ -221,7 +221,7 @@ public class VendingMachine {
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("net.imashamed.vsim.VendingMachine[machineBalance: ");
+        sb.append("VendingMachine[machineBalance: ");
         sb.append(String.format("%.2f", machineBalance));
         sb.append(", userBalance: ");
         sb.append(String.format("%.2f", userBalance));

@@ -42,7 +42,14 @@ public class SelectCommand implements Command {
 
         Product p = vm.getProductByName(productName);
         if (p != null) { //TODO: Implement credit support
-            vm.selectProduct(p);
+            switch (vm.selectProduct(p)) {
+                case VendingMachine.OUT_OF_STOCK:
+                    System.out.println("The selected product is out of stock!");
+                case VendingMachine.PAYMENT_FAIL:
+                case VendingMachine.SUCCESS:
+                default:
+
+            }
         } else {
             System.out.println("The product \"" + productName + "\" was not found.");
             System.out.println("Use 'list' to view all available products.");
