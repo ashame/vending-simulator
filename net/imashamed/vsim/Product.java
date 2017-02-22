@@ -20,22 +20,22 @@ package net.imashamed.vsim;
 import java.util.Objects;
 
 /**
- * A net.imashamed.vsim.Product object to be used as merchandise in {@link VendingMachine}
+ * A Product object to be used as merchandise in {@link VendingMachine}
  * @author nathan
  *         created on 2017-02-18.
  */
 public class Product {
-    private final double price;
-    private final String name;
+    private final double PRICE;
+    private final String NAME;
 
     /**
-     * Constructs a new product with a given name and price
-     * @param name the name of the product - case sensitive
-     * @param price the dollar price of the product
+     * Constructs a new product with a given NAME and PRICE
+     * @param name the NAME of the product - case sensitive
+     * @param price the dollar PRICE of the product
      */
     public Product(String name, double price) {
-        this.name = name;
-        this.price = price;
+        this.NAME = name;
+        this.PRICE = price;
     }
 
     /**
@@ -48,8 +48,8 @@ public class Product {
             return true;
         if (o instanceof Product) {
             Product product = (Product) o;
-            if ((product.getPrice() == this.price) &&
-                    (product.getName().equals(this.name))) {
+            if ((product.getPrice() == this.PRICE) &&
+                    (product.getName().equals(this.NAME))) {
                 return true;
             }
         }
@@ -57,30 +57,30 @@ public class Product {
     }
 
     /**
-     * @return the dollar price of the product
+     * @return the dollar PRICE of the product
      */
     public double getPrice() {
-        return this.price;
+        return this.PRICE;
     }
 
     /**
-     * @return the name of the product
+     * @return the NAME of the product
      */
     public String getName() {
-        return this.name;
+        return this.NAME;
     }
 
     /**
-     * @return the hash code of the net.imashamed.vsim.Product
+     * @return the hash code of the Product
      */
     public int hashCode() {
-        return Objects.hash(name, price);
+        return Objects.hash(NAME, PRICE);
     }
 
     /**
-     * @return a string representation of the product in the format net.imashamed.vsim.Product[name, price]
+     * @return a string representation of the product in the format Product[NAME, PRICE]
      */
     public String toString() {
-        return String.format("Product[%s, $%.2f]", name, price);
+        return String.format("Product[%s, $%.2f]", NAME, PRICE);
     }
 }

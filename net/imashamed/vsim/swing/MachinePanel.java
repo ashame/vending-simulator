@@ -23,11 +23,12 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
+ * A JPanel containing an illustration of a vending machine
  * @author nathan
  *         created on 2017-02-20.
  */
 public class MachinePanel extends JPanel {
-    Image img;
+    private Image img;
 
     public MachinePanel() {
         try {

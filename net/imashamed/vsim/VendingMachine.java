@@ -36,7 +36,7 @@ public class VendingMachine {
     private Map<Product, Integer> products;
 
     /**
-     * Constructs a new net.imashamed.vsim.VendingMachine with default values
+     * Constructs a VendingMachine with default values
      */
     public VendingMachine() {
         userBalance = 0;
@@ -45,7 +45,7 @@ public class VendingMachine {
     }
 
     /**
-     * Constructs a new net.imashamed.vsim.VendingMachine and fills it with given {@link Product}s with a default quantity of 5
+     * Constructs a VendingMachine and fills it with given {@link Product}s with a default quantity of 5
      * @param products The {@link Product}s to fill the machine with
      */
     public VendingMachine(Product... products) {
@@ -124,7 +124,7 @@ public class VendingMachine {
      * @param str the string to normalize
      * @return the normalized string
      */
-    public String normalize(String str) {
+    public static String normalize(String str) {
         if (str.length() == 0)
             return "";
 
@@ -217,7 +217,7 @@ public class VendingMachine {
     }
 
     /**
-     * @return a string representation of net.imashamed.vsim.VendingMachine, in the format net.imashamed.vsim.VendingMachine[machineBalance, userBalance, Products{productName, productPrice, productStock}]
+     * @return a string representation of VendingMachine, in the format VendingMachine[machineBalance, userBalance, Products{productName, productPrice, productStock}]
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();

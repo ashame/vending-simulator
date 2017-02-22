@@ -47,7 +47,7 @@ public class StatusPanel extends JPanel {
     private static int machineStatus = READY;
 
     /**
-     * Constructs a new net.imashamed.vsim.swing.StatusPanel to display information for a given {@link VendingMachine}
+     * Constructs a StatusPanel to display information for a given {@link VendingMachine}
      * @param vm the {@link VendingMachine} to display information for
      */
     public StatusPanel(VendingMachine vm) {
@@ -115,11 +115,11 @@ public class StatusPanel extends JPanel {
         statusLabel.updateStatus(status);
     }
 
-    static class StatusLabel extends JLabel implements Runnable {
+    private class StatusLabel extends JLabel implements Runnable {
         private BlockingQueue<Integer> queue;
         private VendingMachine vm;
 
-        public StatusLabel(VendingMachine vm) {
+        private StatusLabel(VendingMachine vm) {
             this.vm = vm;
             this.queue = new LinkedBlockingQueue<>();
             queue.add(READY);
